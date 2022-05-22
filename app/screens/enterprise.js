@@ -9,8 +9,10 @@ const {width:WIDTH} =Dimensions.get('window');
 
 export default class Enterprise extends React.Component{
     constructor(props) {
-        super(props);
         
+        super(props);
+        const { route,navigation } = this.props;
+        this.nvt = navigation;
         this.state = {
             //menu:'none',
             hmenu:false,
@@ -48,10 +50,25 @@ export default class Enterprise extends React.Component{
             //check validate
             email:'',
             AlternativeEmail:'',
-            phoneNumber:'',
             checkValidateEmail:'',
             checkValidateAEmail:'',
-
+            //check none
+            //checkNone:['','','','','','','','','','','','','','','','',''],
+            phone1:'',
+            phone2:'',
+            phone3:'',
+            address1:'',
+            address2:'',
+            address3:'',
+            address4:'',
+            address5:'',
+            address6:'',
+            address7:'',
+            tax1:'',
+            tax2:'',
+            tax3:'',
+            tax4:'',
+            tax5:'',
         }
     }
     //an/hien menu
@@ -249,6 +266,36 @@ export default class Enterprise extends React.Component{
             
         }
     }
+    checkNone(){
+        if(this.state.email!=''&&this.state.AlternativeEmail!=''&&this.state.address1!=''&&this.state.address2!=''&&this.state.address3!=''&&this.state.address4!=''&&this.state.address5!=''&&this.state.address6!=''&&this.state.address7!=''&&this.state.phone1!=''&&this.state.phone2!=''&&this.state.phone3!=''&&this.state.tax1!=''&&this.state.
+        tax2!=''&&this.state.tax3!=''&&this.state.tax4!=''&&this.state.tax5!=''&&this.state.checkValidateAEmail=='flex'&&this.state.checkValidateEmail=='flex'){
+            console.log('welcome!')
+            Alert.alert(
+                "Thông báo:",
+                "Cập nhật thông tin thành công!",
+            [
+                {
+                    text: "Cancel",
+                    onPress: ()=>{this.nvt.navigate('front')},
+                    style: "cancel",
+                }
+            ]
+            );
+        }else{
+            console.log('vui long dien du thong tin')
+            Alert.alert(
+                "Thông báo:",
+                "Vui lòng điền đầy đủ thông tin hoặc kiểm tra lại định dạng Email",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => {null},
+                    style: "cancel",
+                }
+            ]
+            );
+        }
+    }
     render(){
         const windowWidth = Dimensions.get('window').width;
         const windowHeight = Dimensions.get('window').height;
@@ -397,8 +444,11 @@ export default class Enterprise extends React.Component{
                             </TouchableOpacity>
                             <TouchableOpacity  onPress={()=>navigation.navigate('front')} style={{borderWidth:0,flex:1,height:windowHeight/11,borderWidth:0}}>
                                 <View style={styles.viewContact}>
-                                    <Icon style = {{}} name="chevron-left" size={30} color="#565658"/>
-                                    <Text style={styles.textCancel}>
+                                    <Icon style = {{}} name="chevron-left" size={windowWidth/18} color="#565658"/>
+                                    <Text style={{fontSize:windowWidth/20,
+                            color:'#5d5d5f',
+                            textTransform:'uppercase',
+                            fontFamily:'sans-serif-light',}}>
                                         cancel
                                     </Text>
                                 </View>
@@ -444,8 +494,8 @@ export default class Enterprise extends React.Component{
                                                 }}
                                                 source={{uri:userinfo.user[i].img}}
                                             />
-                                            <View style={{width: 20,height:20,borderWidth:0,borderRadius:4,position:'absolute',zIndex: 2000,top:'80%',backgroundColor:'#fff',borderWidth:0.5,left:'20%',alignItems:'center',justifyContent:'center',borderColor:'#68686a'}}>
-                                                <Icon color='#a0a59c' style={{}} size={15} name='create'/>
+                                            <View style={{width: windowWidth/22,height:windowWidth/22,borderWidth:0,borderRadius:6,position:'absolute',zIndex: 2000,top:'80%',backgroundColor:'#fff',borderWidth:0.5,left:'22%',alignItems:'center',justifyContent:'center',borderColor:'#68686a'}}>
+                                                <Icon color='#a0a59c' style={{}} size={windowWidth/28} name='create'/>
                                             </View>
                                         </View>
                                         <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',borderWidth:0,marginLeft:'4%'}}>
@@ -479,6 +529,8 @@ export default class Enterprise extends React.Component{
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
                                         keyboardType='phone-pad'
+                                        value={this.state.phone1}
+                                        onChangeText={(text) => { this.setState({ phone1: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -488,6 +540,8 @@ export default class Enterprise extends React.Component{
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
                                         keyboardType='phone-pad'
+                                        value={this.state.phone2}
+                                        onChangeText={(text) => { this.setState({ phone2: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -497,6 +551,8 @@ export default class Enterprise extends React.Component{
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
                                         keyboardType='phone-pad'
+                                        value={this.state.phone3}
+                                        onChangeText={(text) => { this.setState({ phone3: text})}}
                                         />
                                     </View>
                                     <View style={{width:'100%',borderWidth:0,marginTop:'5%'}}>
@@ -558,6 +614,8 @@ export default class Enterprise extends React.Component{
                                         placeholder='Address Line 1'
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
+                                        value={this.state.address1}
+                                        onChangeText={(text) => { this.setState({ address1: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -566,6 +624,8 @@ export default class Enterprise extends React.Component{
                                         placeholder='Address Line 2'
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
+                                        value={this.state.address2}
+                                        onChangeText={(text) => { this.setState({ address2: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -574,6 +634,8 @@ export default class Enterprise extends React.Component{
                                         placeholder='Street'
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
+                                        value={this.state.address3}
+                                        onChangeText={(text) => { this.setState({ address3: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -582,6 +644,8 @@ export default class Enterprise extends React.Component{
                                         placeholder='Ward'
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
+                                        value={this.state.address4}
+                                        onChangeText={(text) => { this.setState({ address4: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -590,6 +654,8 @@ export default class Enterprise extends React.Component{
                                         placeholder='City/ Region'
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
+                                        value={this.state.address5}
+                                        onChangeText={(text) => { this.setState({ address5: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -598,6 +664,8 @@ export default class Enterprise extends React.Component{
                                         placeholder='Country'
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
+                                        value={this.state.address6}
+                                        onChangeText={(text) => { this.setState({ address6: text})}}
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -607,10 +675,12 @@ export default class Enterprise extends React.Component{
                                         placeholderTextColor={'#7a7a7a'}
                                         underlineColorAndroid='transparent'     
                                         keyboardType='number-pad'
+                                        value={this.state.address7}
+                                        onChangeText={(text) => { this.setState({ address7: text})}}
                                         />
                                     </View>
                                 </View>
-                                <View  style={{width:'100%',alignItems:'center',borderWidth:0}}>
+                                <View  style={{width:'100%',alignItems:'center',borderWidth:0,marginTop:'5%'}}>
                                     <View style={{width:'96%',borderWidth:0,borderRadius:10,backgroundColor:'#f1f5e6',alignItems:'center',padding:10}}>
                                         <View style={{width:'100%',borderWidth:0}}>
                                             <Text style={{marginRight: '4%',color:'#504f54',fontSize:20,fontWeight:'bold'}}>
@@ -624,6 +694,8 @@ export default class Enterprise extends React.Component{
                                             placeholderTextColor={'#7a7a7a'}
                                             underlineColorAndroid='transparent'     
                                             keyboardType='number-pad'
+                                            value={this.state.tax1}
+                                            onChangeText={(text) => { this.setState({ tax1: text})}}
                                             />
                                         </View>
                                         <View style={{width:'100%',borderWidth:0,marginTop:'5%'}}>
@@ -638,6 +710,8 @@ export default class Enterprise extends React.Component{
                                             placeholderTextColor={'#7a7a7a'}
                                             underlineColorAndroid='transparent'     
                                             keyboardType='number-pad'
+                                            value={this.state.tax2}
+                                            onChangeText={(text) => { this.setState({ tax2: text})}}
                                             />
                                         </View>
                                         <View style={{width:'100%',borderWidth:0,marginTop:'5%'}}>
@@ -652,6 +726,8 @@ export default class Enterprise extends React.Component{
                                             placeholderTextColor={'#7a7a7a'}
                                             underlineColorAndroid='transparent'     
                                             keyboardType='number-pad'
+                                            value={this.state.tax3}
+                                            onChangeText={(text) => { this.setState({ tax3: text})}}
                                             />
                                         </View>
                                         <View style={{width:'100%',borderWidth:0,marginTop:'5%'}}>
@@ -669,6 +745,8 @@ export default class Enterprise extends React.Component{
                                             keyboardType='number-pad'
                                             multiline = {true}
                                             numberOfLines = {4}
+                                            value={this.state.tax4}
+                                            onChangeText={(text) => { this.setState({ tax4: text})}}
                                             />
                                         </View>
                                     </View>
@@ -689,6 +767,8 @@ export default class Enterprise extends React.Component{
                                             underlineColorAndroid='transparent'     
                                             multiline = {true}
                                             numberOfLines = {4}
+                                            value={this.state.tax5}
+                                            onChangeText={(text) => { this.setState({ tax5: text})}}
                                             />
                                         </View>
                                     </View>
@@ -774,7 +854,7 @@ export default class Enterprise extends React.Component{
                             />
                             <Text style={{fontSize:10,color:'#565658'}}>Projects</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity  style={styles.c4Center} onPress={()=>this.huongdan()}>
+                        <TouchableOpacity  style={styles.c4Center} onPress={()=>this.checkNone()}>
                             <Icon style = {{}} name="save" size={50} color="#fff"
                             />
                             <Text style={{fontSize:10,color:'#565658'}}></Text>
