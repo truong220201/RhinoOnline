@@ -3,7 +3,7 @@ Hướng dẫn: Chạm vào người dùng để xem trang thông tin cá nhân.
 ![image](https://user-images.githubusercontent.com/91840628/169660742-1e97fef2-c191-4315-9470-5214c919a101.png)
 ![image](https://user-images.githubusercontent.com/91840628/169660754-f08c0d93-9a96-4663-8818-7ab29b997cfb.png)
 
-Các chức năng bổ sung:
+Các chức năng bổ sung:           
 + Giao diện sáng/tối
 ![image](https://user-images.githubusercontent.com/91840628/169660636-19ed953a-de55-42e9-abef-7eec408ca959.png)
 
@@ -19,3 +19,4 @@ Các chức năng bổ sung:
 + Kiểm tra thông tin điền thiếu
 ![image](https://user-images.githubusercontent.com/91840628/169683960-50142667-7612-4b98-99c8-04968584ee2d.png)
 
+.
